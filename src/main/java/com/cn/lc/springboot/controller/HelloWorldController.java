@@ -15,7 +15,7 @@ import java.util.Map;
  */
 @RestController
 public class HelloWorldController {
-//    @RequestMapping("/api/lc/hellospringboot")
+//   @RequestMapping("/api/lc/hellospringboot")
     @RequestMapping(value = "/api/lc/hellospringboot", method = RequestMethod.GET)
     public String index() {
         return "Hello springboot!!react蚂蚁金服设计";

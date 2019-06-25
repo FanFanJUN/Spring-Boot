@@ -15,7 +15,7 @@
     <context id="MysqlTables" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
         一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
-        <property name="autoDelimitKeywords" value="true" />
+        <!--<property name="autoDelimitKeywords" value="true" />-->
         <!-- 生成的Java文件的编码 -->
         <property name="javaFileEncoding" value="utf-8" />
         <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
@@ -32,7 +32,7 @@
 
         <!-- 注释 -->
         <commentGenerator >
-            <property name="suppressAllComments" value="false"/><!-- 是否取消注释 -->
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
             <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳-->
         </commentGenerator>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cn.lc.springboot.service.TestUserMapper">
+<mapper namespace="com.cn.lc.springboot.dao.TestUserMapper">
   <resultMap id="BaseResultMap" type="com.cn.lc.springboot.model.entity.TestUser">
-    <result column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
@@ -10,6 +10,10 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="birthDate" jdbcType="VARCHAR" property="birthdate" />
   </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from test_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.cn.lc.springboot.model.entity.TestUser">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
@@ -21,6 +25,21 @@
       #{idnumber,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{birthdate,jdbcType=VARCHAR}
       )
   </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cn.lc.springboot.model.entity.TestUser">
+    update test_user
+    set name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      IDnumber = #{idnumber,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      birthDate = #{birthdate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, password, sex, IDnumber, description, birthDate
+    from test_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, password, sex, IDnumber, description, birthDate
     from test_user

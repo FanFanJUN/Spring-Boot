@@ -1,6 +1,6 @@
 package com.cn.lc.springboot.service.imp;
 
-import com.cn.lc.springboot.dao.UserMapper;
+import com.cn.lc.springboot.dao.TestUserMapper;
 import com.cn.lc.springboot.model.entity.TestUser;
 import com.cn.lc.springboot.service.UserService;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 //@Transactional
 public class UserServiceImpl implements UserService {
     @Resource
-    private UserMapper userMapper;
+    private TestUserMapper userMapper;
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return 0;

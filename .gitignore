@@ -36,3 +36,4 @@ src/main/.DS_Store
 src/main/java/com/cn/lc/springboot/dao/TestUserMapper.java
 src/main/resources/.DS_Store
 src/main/resources/static/.DS_Store
+out/

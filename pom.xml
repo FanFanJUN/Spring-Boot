@@ -44,6 +44,18 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- https://github.com/abel533/Mapper/wiki/1.3-spring-boot -->
+        <!--<dependency>-->
+            <!--<groupId>tk.mybatis</groupId>-->
+            <!--<artifactId>mapper-spring-boot-starter</artifactId>-->
+            <!--<version>2.1.5</version>-->
+        <!--</dependency>-->
+        <!--https://github.com/baomidou/mybatis-plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.1.2</version>
+        </dependency>
         <!-- 链接MySQL -->
         <dependency>
             <groupId>mysql</groupId>
@@ -51,11 +63,11 @@
             <version>8.0.15</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.0.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.mybatis.spring.boot</groupId>-->
+            <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
+            <!--<version>2.0.0</version>-->
+        <!--</dependency>-->
         <!--<dependency>-->
             <!--<groupId>org.mybatis.generator</groupId>-->
             <!--<artifactId>mybatis-generator-core</artifactId>-->
@@ -81,56 +93,86 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-    </dependencies>
 
+        <!--代码生成器-->
+        <!--MyBatis-Plus 从 3.0.3 之后移除了代码生成器与模板引擎的默认依赖，需要手动添加相关依赖-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.1.2</version>
+        </dependency>
+        <!--添加 模板引擎 依赖，MyBatis-Plus 支持 Velocity（默认）、Freemarker、Beetl-->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.28</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                </configuration>
-            </plugin>
-            <!--Running MyBatis Generator With Maven-->
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
-                <executions>
-                    <execution>
-                        <id>Generate MyBatis Artifacts</id>
-                        <!-- 该配置可避免maven install或者package时候运行该插件，导致本地mapper重新生成 -->
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- Mybatis-Generator 工具配置文件的位置 -->
-                    <configurationFile>src/main/resources/mybatis-generator/generatorConfig.xml</configurationFile>
-                    <verbose>true</verbose>
-                    <overwrite>true</overwrite>
-                </configuration>
-
-                <dependencies>
-                    <!-- 链接MySQL -->
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.15</version>
-                    </dependency>
-
-
-                    <dependency>
-                        <groupId>org.mybatis.generator</groupId>
-                        <artifactId>mybatis-generator-core</artifactId>
-                        <version>1.3.2</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<fork>true</fork>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+            <!--&lt;!&ndash;Running MyBatis Generator With Maven&ndash;&gt;-->
+            <!--<plugin>-->
+                <!--<groupId>org.mybatis.generator</groupId>-->
+                <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+                <!--<version>1.3.6</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>Generate MyBatis Artifacts</id>-->
+                        <!--&lt;!&ndash; 该配置可避免maven install或者package时候运行该插件，导致本地mapper重新生成 &ndash;&gt;-->
+                        <!--<phase>deploy</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>generate</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--&lt;!&ndash; Mybatis-Generator 工具配置文件的位置 &ndash;&gt;-->
+                    <!--<configurationFile>src/main/resources/mybatis-generator/generatorConfig.xml</configurationFile>-->
+                    <!--&lt;!&ndash;是否准许移动文件&ndash;&gt;-->
+                    <!--<verbose>true</verbose>-->
+                    <!--&lt;!&ndash;是否重写文件&ndash;&gt;-->
+                    <!--<overwrite>true</overwrite>-->
+                <!--</configuration>-->
+
+                <!--<dependencies>-->
+                    <!--&lt;!&ndash; 链接MySQL &ndash;&gt;-->
+                    <!--<dependency>-->
+                        <!--<groupId>mysql</groupId>-->
+                        <!--<artifactId>mysql-connector-java</artifactId>-->
+                        <!--<version>8.0.15</version>-->
+                    <!--</dependency>-->
+
+                    <!--&lt;!&ndash; https://mvnrepository.com/artifact/tk.mybatis/mapper-generator &ndash;&gt;-->
+                    <!--&lt;!&ndash; https://mvnrepository.com/artifact/tk.mybatis/mapper &ndash;&gt;-->
+                    <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<groupId>tk.mybatis</groupId>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<artifactId>mapper</artifactId>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<version>4.1.5</version>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<groupId>org.mybatis.generator</groupId>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<artifactId>mybatis-generator-core</artifactId>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<version>1.3.2</version>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+                <!--</dependencies>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
 
 </project>
